@@ -28,22 +28,6 @@ function InputShortener() {
     }
   }
 
-  const redirectURL = async()=> {
-    let shortUrlId = shortUrl.split('/').pop()
-    try {
-      let res = await AxiosService.get(`${ApiRoutes.REDIRECT_URL.path}/${shortUrlId}`, 
-        {headers: {
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
-      }},{authenticate:ApiRoutes.REDIRECT_URL.auth}
-       )
-
-    } catch (error) {
-      toast.error(error.message)
-    }
-  }
-
   async function writeClipboardText() {
     try {
       await navigator.clipboard.writeText(`${config.API_URL}/url/${shortUrl}`);
@@ -73,8 +57,10 @@ function InputShortener() {
             <div id="short-url-container">
             <p>Here's your shortened URL:</p>
             <div id="short-url">
-                <a target="_blank"
-                onClick={redirectURL}>{`${config.API_URL}/url/${shortUrl}`}</a>
+                <a 
+                href={`${config.API_URL}/url/${shortUrl}`}
+                target="_blank"
+                > https://tiny/{shortUrl}</a>
                 
                 <button className="copy-button" type="button" id="copy-btn" onClick={() => writeClipboardText()}>Copy</button>
             </div>

@@ -18,22 +18,6 @@ function URLDirectory() {
     }
 }
 
-const redirectURL = async(shortUrlId)=> {
-  try {
-    let res = await AxiosService.get(`${ApiRoutes.REDIRECT_URL.path}/${shortUrlId}`, 
-      {headers: {
-      "Cache-Control": "no-cache",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Access-Control-Allow-Origin": "*",
-    }},{authenticate:ApiRoutes.REDIRECT_URL.auth}
-     )
-
-  } catch (error) {
-    toast.error(error.message)
-  }
-}
-
-
   useEffect(() => {
     fetchdata()
   },[])
@@ -61,7 +45,7 @@ const redirectURL = async(shortUrlId)=> {
             return <tr key={i}>
             <td>{i+1}</td>
             <td className='hidden-xs'>{url.url}</td>
-            <td><a target="_blank" onClick={()=>redirectURL(url.shortUrlId)}>{url.shortUrlId}</a></td>
+            <td><a href={`${config.API_URL}/url/${url.shortUrlId}`}  target="_blank">{`https://tiny/${url.shortUrlId}`}</a></td>
             <td>{url.clicks}</td>
             <td className='hidden-xs'>{new Date(url.date).toLocaleDateString()}</td>
             </tr>

@@ -88,7 +88,7 @@ function MyURLs() {
            return <tr key={i}>
            <td>{i+1}</td>
            <td className='hidden-xs'>{url.url}</td>
-           <td><a href={`${config.API_URL}/url/${url.shortUrlId}`} target="_blank">{`${config.API_URL}/url/${url.shortUrlId}`}</a></td>
+           <td><a href={`${config.API_URL}/url/${url.shortUrlId}`} target="_blank">{`https://tiny/${url.shortUrlId}`}</a></td>
            <td>{url.clicks}</td>
            <td className='hidden-xs'>{new Date(url.date).toLocaleDateString()}</td>
            </tr>

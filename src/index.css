@@ -1,6 +1,6 @@
 
 :root {
-  --bg-image: url('./images/bg-4.jpeg');
+  --bg-image: url('/images/bg-4.jpeg');
 }
 
 body, .nav {
