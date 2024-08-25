@@ -56,7 +56,11 @@ o Upon submission, the new password is securely stored, and the random string is
 
 # Technology Used
 React
+
 React-Router
+
 Axios
+
 React-bootstrap
+
 Toastify – to handle error and success notifications.
